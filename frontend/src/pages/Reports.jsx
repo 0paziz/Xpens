@@ -49,7 +49,7 @@ export default function Reports() {
     >
       {/* -------- ERROR -------- */}
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg mb-4 text-sm flex items-center justify-between gap-2">
+        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900/50 text-red-600 dark:text-red-400 px-4 py-3 rounded-lg mb-4 text-sm flex items-center justify-between gap-2">
           <span>{error}</span>
           <button onClick={fetchSummary} className="underline font-medium whitespace-nowrap hover:text-red-800 transition-colors">
             Retry
@@ -69,22 +69,22 @@ export default function Reports() {
       ) : (
         <div className="space-y-4 sm:space-y-6 print:space-y-8">
           {/* -------- OVERVIEW SUMMARY -------- */}
-          <div className="bg-white p-4 sm:p-6 rounded-xl shadow-sm border border-gray-100">
-            <div className="flex flex-col sm:flex-row sm:justify-around sm:text-center divide-y sm:divide-y-0 sm:divide-x divide-gray-100 gap-4 sm:gap-0">
+          <div className="bg-white dark:bg-[#0B1120] p-4 sm:p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800">
+            <div className="flex flex-col sm:flex-row sm:justify-around sm:text-center divide-y sm:divide-y-0 sm:divide-x divide-gray-100 dark:divide-gray-800 gap-4 sm:gap-0">
               <div className="sm:flex-1 py-1 sm:py-0">
-                <p className="text-gray-500 text-xs sm:text-sm font-medium">Total Income</p>
+                <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm font-medium">Total Income</p>
                 <p className="text-xl sm:text-2xl font-bold text-emerald-600 mt-1">
                   UGX {summary.income?.toLocaleString() || 0}
                 </p>
               </div>
               <div className="sm:flex-1 py-1 sm:py-0">
-                <p className="text-gray-500 text-xs sm:text-sm font-medium">Total Expenses</p>
+                <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm font-medium">Total Expenses</p>
                 <p className="text-xl sm:text-2xl font-bold text-red-500 mt-1">
                   UGX {summary.expense?.toLocaleString() || 0}
                 </p>
               </div>
               <div className="sm:flex-1 py-1 sm:py-0">
-                <p className="text-gray-500 text-xs sm:text-sm font-medium">Net Balance</p>
+                <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm font-medium">Net Balance</p>
                 <p className={`text-xl sm:text-2xl font-bold mt-1 ${summary.balance >= 0 ? "text-emerald-600" : "text-red-600"}`}>
                   UGX {summary.balance?.toLocaleString() || 0}
                 </p>
@@ -95,8 +95,8 @@ export default function Reports() {
           {/* -------- TABLES GRID -------- */}
           <div className="grid md:grid-cols-2 gap-4 sm:gap-6 print:block print:space-y-8">
             {/* ---- EXPENSES BY CATEGORY ---- */}
-            <div className="bg-white p-4 sm:p-5 rounded-xl shadow-sm border border-gray-100">
-              <h2 className="text-base sm:text-lg font-semibold text-gray-800 mb-4 border-b pb-2">
+            <div className="bg-white dark:bg-[#0B1120] p-4 sm:p-5 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800">
+              <h2 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-100 mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">
                 Expenses by Category
               </h2>
               {expenseData.length === 0 ? (
@@ -105,10 +105,10 @@ export default function Reports() {
                 <div className="overflow-x-auto -mx-1">
                   <table className="w-full text-left border-collapse min-w-[280px]">
                     <thead>
-                      <tr className="bg-gray-50 text-gray-600 text-xs sm:text-sm">
-                        <th className="p-2 sm:p-3 border-b">Category</th>
-                        <th className="p-2 sm:p-3 border-b text-right">Amount</th>
-                        <th className="p-2 sm:p-3 border-b text-right">% of Total</th>
+                      <tr className="bg-gray-50 dark:bg-gray-800/30 text-gray-600 dark:text-gray-400 text-xs sm:text-sm">
+                        <th className="p-2 sm:p-3 border-b border-gray-200 dark:border-gray-800">Category</th>
+                        <th className="p-2 sm:p-3 border-b border-gray-200 dark:border-gray-800 text-right">Amount</th>
+                        <th className="p-2 sm:p-3 border-b border-gray-200 dark:border-gray-800 text-right">% of Total</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -118,12 +118,12 @@ export default function Reports() {
                             ? ((item.total / summary.expense) * 100).toFixed(1)
                             : 0;
                         return (
-                          <tr key={index} className="border-b hover:bg-gray-50">
-                            <td className="p-2 sm:p-3 capitalize text-sm">{item.category}</td>
-                            <td className="p-2 sm:p-3 text-right font-medium text-sm">
+                          <tr key={index} className="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                            <td className="p-2 sm:p-3 capitalize text-sm text-gray-800 dark:text-gray-200">{item.category}</td>
+                            <td className="p-2 sm:p-3 text-right font-medium text-sm text-gray-800 dark:text-gray-200">
                               UGX {item.total.toLocaleString()}
                             </td>
-                            <td className="p-2 sm:p-3 text-right text-gray-500 text-sm">
+                            <td className="p-2 sm:p-3 text-right text-gray-500 dark:text-gray-400 text-sm">
                               {percentage}%
                             </td>
                           </tr>
@@ -136,8 +136,8 @@ export default function Reports() {
             </div>
 
             {/* ---- MONTHLY OVERVIEW ---- */}
-            <div className="bg-white p-4 sm:p-5 rounded-xl shadow-sm border border-gray-100">
-              <h2 className="text-base sm:text-lg font-semibold text-gray-800 mb-4 border-b pb-2">
+            <div className="bg-white dark:bg-[#0B1120] p-4 sm:p-5 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800">
+              <h2 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-100 mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">
                 Monthly Overview
               </h2>
               {monthData.length === 0 ? (
@@ -146,23 +146,23 @@ export default function Reports() {
                 <div className="overflow-x-auto -mx-1">
                   <table className="w-full text-left border-collapse min-w-[320px]">
                     <thead>
-                      <tr className="bg-gray-50 text-gray-600 text-xs sm:text-sm">
-                        <th className="p-2 sm:p-3 border-b">Month</th>
-                        <th className="p-2 sm:p-3 border-b text-right text-emerald-600">Income</th>
-                        <th className="p-2 sm:p-3 border-b text-right text-red-500">Expense</th>
-                        <th className="p-2 sm:p-3 border-b text-right">Net</th>
+                      <tr className="bg-gray-50 dark:bg-gray-800/30 text-gray-600 dark:text-gray-400 text-xs sm:text-sm">
+                        <th className="p-2 sm:p-3 border-b border-gray-200 dark:border-gray-800">Month</th>
+                        <th className="p-2 sm:p-3 border-b border-gray-200 dark:border-gray-800 text-right text-emerald-600">Income</th>
+                        <th className="p-2 sm:p-3 border-b border-gray-200 dark:border-gray-800 text-right text-red-500">Expense</th>
+                        <th className="p-2 sm:p-3 border-b border-gray-200 dark:border-gray-800 text-right">Net</th>
                       </tr>
                     </thead>
                     <tbody>
                       {monthData.map((item, index) => {
                         const net = item.income - item.expense;
                         return (
-                          <tr key={index} className="border-b hover:bg-gray-50">
-                            <td className="p-2 sm:p-3 font-medium text-sm">{item.month}</td>
-                            <td className="p-2 sm:p-3 text-right text-sm">
+                          <tr key={index} className="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                            <td className="p-2 sm:p-3 font-medium text-sm text-gray-800 dark:text-gray-200">{item.month}</td>
+                            <td className="p-2 sm:p-3 text-right text-sm text-gray-800 dark:text-gray-200">
                               UGX {item.income.toLocaleString()}
                             </td>
-                            <td className="p-2 sm:p-3 text-right text-sm">
+                            <td className="p-2 sm:p-3 text-right text-sm text-gray-800 dark:text-gray-200">
                               UGX {item.expense.toLocaleString()}
                             </td>
                             <td className={`p-2 sm:p-3 text-right font-semibold text-sm ${net >= 0 ? "text-emerald-600" : "text-red-500"}`}>

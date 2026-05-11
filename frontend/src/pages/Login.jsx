@@ -1,3 +1,4 @@
+// src/pages/Login.jsx
 import { useState, useContext } from "react";
 import API from "../api/api";
 import { useNavigate, Link } from "react-router-dom";
@@ -26,51 +27,70 @@ export default function Login() {
     }
   };
 
+  const inputClass =
+    "w-full px-0 py-3 bg-transparent border-b border-gray-300 dark:border-gray-800 text-sm text-gray-900 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-700 focus:outline-none focus:border-emerald-500 transition-colors duration-200";
+
   return (
-    <div className="h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
-      <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl w-96 shadow-2xl border border-white/10">
-        <div className="text-center mb-6">
-          <h1 className="text-3xl font-bold text-white mb-1">Xpens</h1>
-          <p className="text-gray-400 text-sm">Sign in to your account</p>
-        </div>
+    <div className="min-h-screen bg-white dark:bg-[#030712] flex flex-col" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display@0;1&display=swap');`}</style>
 
-        {error && (
-          <div className="bg-red-500/20 border border-red-500/50 text-red-300 px-4 py-2 rounded-lg mb-4 text-sm">
-            {error}
-          </div>
-        )}
-
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="email"
-            className="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 transition"
-            placeholder="Email"
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-          />
-          <input
-            type="password"
-            className="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 transition"
-            placeholder="Password"
-            value={form.password}
-            onChange={(e) => setForm({ ...form, password: e.target.value })}
-          />
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full p-3 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {loading ? "Signing in..." : "Login"}
-          </button>
-        </form>
-
-        <p className="text-center text-gray-400 text-sm mt-6">
-          Don't have an account?{" "}
-          <Link to="/register" className="text-emerald-400 hover:text-emerald-300 font-medium">
-            Register
+      {/* Minimal top bar */}
+      <header className="max-w-3xl mx-auto w-full px-6 py-4 flex items-center justify-between">
+        <Link to="/" className="text-sm font-medium text-gray-900 dark:text-gray-50 tracking-tight">
+          Xpens
+        </Link>
+        <p className="text-sm text-gray-600 dark:text-gray-400">
+          No account?{" "}
+          <Link to="/register" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors duration-200">
+            Sign up
           </Link>
         </p>
+      </header>
+
+      {/* Form */}
+      <div className="flex-1 flex items-center justify-center px-6 py-16">
+        <div className="w-full max-w-[400px] bg-white dark:bg-transparent border border-gray-200 dark:border-transparent rounded-2xl shadow-sm dark:shadow-none p-6 sm:p-8">
+          <p className="text-xs tracking-widest text-emerald-500 uppercase mb-7">Welcome back</p>
+          <h1
+            className="text-[32px] font-normal leading-tight tracking-tight text-gray-900 dark:text-gray-50 mb-10"
+            style={{ fontFamily: "'DM Serif Display', serif" }}
+          >
+            Sign in to your account.
+          </h1>
+
+          {error && (
+            <p className="text-xs text-red-500 mb-6 pb-4 border-b border-gray-200 dark:border-gray-900">{error}</p>
+          )}
+
+          <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+            <div>
+              <input
+                type="email"
+                placeholder="Email address"
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                className={inputClass}
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                placeholder="Password"
+                value={form.password}
+                onChange={(e) => setForm({ ...form, password: e.target.value })}
+                className={inputClass}
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="mt-2 px-7 py-3 bg-emerald-500 hover:bg-emerald-600 disabled:opacity-50 text-white text-sm font-medium rounded-lg transition-all duration-200 hover:-translate-y-px self-start"
+            >
+              {loading ? "Signing in…" : "Sign in"}
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

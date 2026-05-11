@@ -1,11 +1,13 @@
 // src/components/Sidebar.jsx
 import { useContext } from "react";
-import { FaWallet, FaChartPie, FaPlusCircle, FaSignOutAlt, FaTimes, FaCoins, FaUser } from "react-icons/fa";
+import { FaWallet, FaChartPie, FaPlusCircle, FaSignOutAlt, FaTimes, FaCoins, FaUser, FaSun, FaMoon } from "react-icons/fa";
 import { AuthContext } from "../context/AuthContext";
+import { ThemeContext } from "../context/ThemeContext";
 import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Sidebar({ onClose }) {
   const { logout } = useContext(AuthContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -82,13 +84,24 @@ export default function Sidebar({ onClose }) {
         </nav>
       </div>
 
-      {/* -------- LOGOUT -------- */}
-      <button
-        onClick={handleLogout}
-        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-red-500/20 text-gray-400 hover:text-red-400 cursor-pointer transition w-full"
-      >
-        <FaSignOutAlt /> Logout
-      </button>
+      {/* -------- THEME & LOGOUT -------- */}
+      <div className="space-y-2">
+        <button
+          onClick={toggleTheme}
+          className="flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-white/5 text-gray-400 hover:text-white cursor-pointer transition w-full"
+        >
+          <div className="flex items-center gap-3">
+            {theme === "dark" ? <FaSun /> : <FaMoon />}
+            <span>{theme === "dark" ? "Light Mode" : "Dark Mode"}</span>
+          </div>
+        </button>
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-red-500/20 text-gray-400 hover:text-red-400 cursor-pointer transition w-full"
+        >
+          <FaSignOutAlt /> Logout
+        </button>
+      </div>
     </div>
   );
 }

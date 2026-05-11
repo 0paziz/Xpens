@@ -18,7 +18,7 @@ export default function Layout({ title, subtitle, children, rightAction }) {
   }, []);
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-gray-100 dark:bg-[#030712]">
 
       {/* -------- MOBILE SIDEBAR OVERLAY -------- */}
       {sidebarOpen && (
@@ -44,11 +44,11 @@ export default function Layout({ title, subtitle, children, rightAction }) {
       <div className="flex-1 flex flex-col min-w-0">
 
         {/* -------- MOBILE TOP BAR -------- */}
-        <div className="flex items-center justify-between px-4 py-3 bg-white shadow-sm md:hidden sticky top-0 z-10 print:hidden">
+        <div className="flex items-center justify-between px-4 py-3 bg-white dark:bg-[#0B1120] border-b border-transparent dark:border-gray-800 shadow-sm md:hidden sticky top-0 z-10 print:hidden">
           {/* Hamburger */}
           <button
             onClick={() => setSidebarOpen(true)}
-            className="p-2 rounded-md text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-500"
+            className="p-2 rounded-md text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-500"
             aria-label="Open sidebar"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -56,7 +56,7 @@ export default function Layout({ title, subtitle, children, rightAction }) {
             </svg>
           </button>
 
-          <h1 className="text-base font-bold text-gray-800">{title}</h1>
+          <h1 className="text-base font-bold text-gray-800 dark:text-gray-100">{title}</h1>
 
           {/* Right slot: custom action or avatar fallback */}
           {rightAction || (
@@ -71,7 +71,7 @@ export default function Layout({ title, subtitle, children, rightAction }) {
 
           {/* Desktop header (hidden on mobile since top bar handles it) */}
           <div className="hidden md:block mb-6 print:block">
-            <h1 className="text-2xl font-bold text-gray-800">{title}</h1>
+            <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-100">{title}</h1>
             {subtitle && (
               <p className="text-gray-500 text-sm mt-0.5">{subtitle}</p>
             )}

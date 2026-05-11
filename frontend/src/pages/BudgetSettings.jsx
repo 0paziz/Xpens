@@ -146,32 +146,32 @@ export default function BudgetSettings() {
       <div className="max-w-6xl mx-auto">
         {/* Alert Messages */}
         {error && (
-          <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+          <div className="mb-4 p-4 bg-red-100 dark:bg-red-900/20 border border-red-400 dark:border-red-900/50 text-red-700 dark:text-red-400 rounded-lg">
             {error}
           </div>
         )}
         {success && (
-          <div className="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+          <div className="mb-4 p-4 bg-green-100 dark:bg-green-900/20 border border-green-400 dark:border-green-900/50 text-green-700 dark:text-green-400 rounded-lg">
             {success}
           </div>
         )}
 
         <div className="grid md:grid-cols-3 gap-6">
           {/* Create Budget Form */}
-          <div className="md:col-span-1 bg-white rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
+          <div className="md:col-span-1 bg-white dark:bg-[#0B1120] border border-transparent dark:border-gray-800 rounded-lg shadow-sm p-6">
+            <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-4 flex items-center">
               <FaPlus className="mr-2 text-green-600" /> Create Budget
             </h2>
             <form onSubmit={handleCreateBudget}>
               <div className="mb-4">
-                <label className="block text-gray-700 font-semibold mb-2">
+                <label className="block text-gray-700 dark:text-gray-300 font-semibold mb-2">
                   Budget Type
                 </label>
                 <select
                   name="type"
                   value={formData.type}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-[#0B1120] text-gray-800 dark:text-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                   disabled={loading}
                 >
                   <option value="weekly">Weekly</option>
@@ -181,14 +181,14 @@ export default function BudgetSettings() {
               </div>
 
               <div className="mb-4">
-                <label className="block text-gray-700 font-semibold mb-2">
+                <label className="block text-gray-700 dark:text-gray-300 font-semibold mb-2">
                   Category
                 </label>
                 <select
                   name="category"
                   value={formData.category}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-[#0B1120] text-gray-800 dark:text-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                   disabled={loading}
                 >
                   {CATEGORIES.map((cat) => (
@@ -200,7 +200,7 @@ export default function BudgetSettings() {
               </div>
 
               <div className="mb-6">
-                <label className="block text-gray-700 font-semibold mb-2">
+                <label className="block text-gray-700 dark:text-gray-300 font-semibold mb-2">
                   Budget Limit
                 </label>
                 <input
@@ -209,7 +209,7 @@ export default function BudgetSettings() {
                   value={formData.limit}
                   onChange={handleInputChange}
                   placeholder="Enter amount"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 bg-transparent text-gray-800 dark:text-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                   disabled={loading}
                   min="0"
                   step="0.01"
@@ -227,8 +227,8 @@ export default function BudgetSettings() {
           </div>
 
           {/* Budgets List */}
-          <div className="md:col-span-2 bg-white rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Your Budgets</h2>
+          <div className="md:col-span-2 bg-white dark:bg-[#0B1120] border border-transparent dark:border-gray-800 rounded-lg shadow-sm p-6">
+            <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Your Budgets</h2>
 
             {budgets && budgets.length > 0 ? (
               <div className="space-y-3 max-h-150 overflow-y-auto">
@@ -237,21 +237,21 @@ export default function BudgetSettings() {
                   return (
                     <div
                       key={editKey}
-                      className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition"
+                      className="flex items-center justify-between p-4 border border-gray-200 dark:border-gray-800 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition"
                     >
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
                           <span className="text-2xl">{getCategoryEmoji(budget.category)}</span>
                           {editingKey === editKey ? (
                             <div className="flex items-center gap-2 flex-1">
-                              <span className="text-gray-700 font-semibold capitalize">
+                              <span className="text-gray-700 dark:text-gray-200 font-semibold capitalize">
                                 {budget.type} - {budget.category}:
                               </span>
                               <input
                                 type="number"
                                 value={editLimit}
                                 onChange={(e) => setEditLimit(e.target.value)}
-                                className="px-3 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                                className="px-3 py-1 border border-gray-300 dark:border-gray-700 bg-transparent text-gray-800 dark:text-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                                 min="0"
                                 step="0.01"
                               />
@@ -273,10 +273,10 @@ export default function BudgetSettings() {
                           ) : (
                             <>
                               <div>
-                                <p className="text-gray-700 font-semibold capitalize">
+                                <p className="text-gray-700 dark:text-gray-200 font-semibold capitalize">
                                   {budget.category} ({budget.type})
                                 </p>
-                                <p className="text-sm text-gray-500">
+                                <p className="text-sm text-gray-500 dark:text-gray-400">
                                   Limit: {" "}
                                   <span className="font-bold text-green-600">
                                     {budget.limit.toLocaleString("en-UG", {
@@ -290,7 +290,7 @@ export default function BudgetSettings() {
                           )}
                         </div>
                         {budget.createdAt && editingKey !== editKey && (
-                          <p className="text-xs text-gray-400 mt-1 ml-10">
+                          <p className="text-xs text-gray-400 dark:text-gray-500 mt-1 ml-10">
                             Created: {new Date(budget.createdAt).toLocaleDateString()}
                           </p>
                         )}
@@ -322,8 +322,8 @@ export default function BudgetSettings() {
               </div>
             ) : (
               <div className="text-center py-8">
-                <p className="text-gray-500 text-lg">No budgets set yet</p>
-                <p className="text-gray-400">Create your first budget to get started</p>
+                <p className="text-gray-500 dark:text-gray-400 text-lg">No budgets set yet</p>
+                <p className="text-gray-400 dark:text-gray-500">Create your first budget to get started</p>
               </div>
             )}
           </div>

@@ -125,12 +125,12 @@ export default function UserProfile() {
 
           {/* -------- ERROR STATE -------- */}
           {error && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 flex items-center gap-3">
-              <svg className="w-5 h-5 text-red-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900/50 rounded-lg p-4 mb-6 flex items-center gap-3">
+              <svg className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
               </svg>
               <div>
-                <p className="text-red-800 font-medium">{error}</p>
+                <p className="text-red-800 dark:text-red-300 font-medium">{error}</p>
               </div>
             </div>
           )}
@@ -139,7 +139,7 @@ export default function UserProfile() {
           {!loading && profile && (
             <div className="space-y-6">
               {/* Main Profile Card */}
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-[#0B1120] border border-transparent dark:border-gray-800 rounded-lg shadow-sm overflow-hidden">
                 {/* Header with avatar background */}
                 <div className="h-24 sm:h-32 bg-gradient-to-r from-emerald-500 to-emerald-600"></div>
 
@@ -147,54 +147,54 @@ export default function UserProfile() {
                 <div className="relative px-4 sm:px-6 pb-6">
                   {/* Avatar and Name */}
                   <div className="flex flex-col sm:flex-row sm:items-end sm:gap-4 mb-6 -mt-12 sm:-mt-16">
-                    <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg bg-emerald-100 flex items-center justify-center border-4 border-white shadow-md flex-shrink-0 mx-auto sm:mx-0">
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg bg-emerald-100 dark:bg-emerald-900 flex items-center justify-center border-4 border-white dark:border-[#0B1120] shadow-md flex-shrink-0 mx-auto sm:mx-0">
                       <FaUser className="w-10 h-10 sm:w-12 sm:h-12 text-emerald-600" />
                     </div>
                     <div className="text-center sm:text-left pb-0 sm:pb-2">
-                      <h2 className="text-xl sm:text-2xl font-bold text-gray-800">{profile.name}</h2>
-                      <p className="text-gray-600 text-sm sm:text-base">Account Owner</p>
+                      <h2 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-gray-100">{profile.name}</h2>
+                      <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">Account Owner</p>
                     </div>
                   </div>
 
                   {/* Info Grid */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 sm:mt-8">
                     {/* Email */}
-                    <div className="bg-gray-50 rounded-lg p-3 sm:p-4">
+                    <div className="bg-gray-50 dark:bg-[#0A0F1C] border border-transparent dark:border-gray-800 rounded-lg p-3 sm:p-4">
                       <div className="flex items-center gap-2 mb-2">
                         <FaEnvelope className="text-emerald-600 w-4 h-4 flex-shrink-0" />
-                        <label className="text-xs sm:text-sm font-semibold text-gray-600">Email Address</label>
+                        <label className="text-xs sm:text-sm font-semibold text-gray-600 dark:text-gray-400">Email Address</label>
                       </div>
-                      <p className="text-gray-800 text-sm sm:text-lg break-all">{profile.email}</p>
+                      <p className="text-gray-800 dark:text-gray-200 text-sm sm:text-lg break-all">{profile.email}</p>
                     </div>
 
                     {/* Member Since */}
-                    <div className="bg-gray-50 rounded-lg p-3 sm:p-4">
+                    <div className="bg-gray-50 dark:bg-[#0A0F1C] border border-transparent dark:border-gray-800 rounded-lg p-3 sm:p-4">
                       <div className="flex items-center gap-2 mb-2">
                         <FaCalendar className="text-emerald-600 w-4 h-4 flex-shrink-0" />
-                        <label className="text-xs sm:text-sm font-semibold text-gray-600">Member Since</label>
+                        <label className="text-xs sm:text-sm font-semibold text-gray-600 dark:text-gray-400">Member Since</label>
                       </div>
-                      <p className="text-gray-800 text-sm sm:text-lg">{formatDate(profile.createdAt)}</p>
+                      <p className="text-gray-800 dark:text-gray-200 text-sm sm:text-lg">{formatDate(profile.createdAt)}</p>
                     </div>
 
                     {/* Total Budgets */}
-                    <div className="bg-gray-50 rounded-lg p-3 sm:p-4">
+                    <div className="bg-gray-50 dark:bg-[#0A0F1C] border border-transparent dark:border-gray-800 rounded-lg p-3 sm:p-4">
                       <div className="flex items-center gap-2 mb-2">
                         <FaWallet className="text-emerald-600 w-4 h-4 flex-shrink-0" />
-                        <label className="text-xs sm:text-sm font-semibold text-gray-600">Active Budgets</label>
+                        <label className="text-xs sm:text-sm font-semibold text-gray-600 dark:text-gray-400">Active Budgets</label>
                       </div>
-                      <p className="text-gray-800 text-sm sm:text-lg font-semibold">{profile.totalBudgets}</p>
+                      <p className="text-gray-800 dark:text-gray-200 text-sm sm:text-lg font-semibold">{profile.totalBudgets}</p>
                     </div>
 
                     {/* Account Status */}
-                    <div className="bg-gray-50 rounded-lg p-3 sm:p-4">
+                    <div className="bg-gray-50 dark:bg-[#0A0F1C] border border-transparent dark:border-gray-800 rounded-lg p-3 sm:p-4">
                       <div className="flex items-center gap-2 mb-2">
                         <svg className="text-emerald-600 w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                         </svg>
-                        <label className="text-xs sm:text-sm font-semibold text-gray-600">Account Status</label>
+                        <label className="text-xs sm:text-sm font-semibold text-gray-600 dark:text-gray-400">Account Status</label>
                       </div>
-                      <p className="text-gray-800 text-sm sm:text-lg">
-                        <span className="inline-block px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs sm:text-sm font-semibold">
+                      <p className="text-gray-800 dark:text-gray-200 text-sm sm:text-lg">
+                        <span className="inline-block px-3 py-1 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 rounded-full text-xs sm:text-sm font-semibold">
                           Active
                         </span>
                       </p>
@@ -221,13 +221,13 @@ export default function UserProfile() {
       {/* -------- EDIT MODAL -------- */}
       {modalOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg shadow-xl max-w-md w-full">
+          <div className="bg-white dark:bg-[#0B1120] rounded-lg shadow-xl border border-transparent dark:border-gray-800 max-w-md w-full">
             {/* Modal Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
-              <h2 className="text-lg sm:text-xl font-bold text-gray-800">Edit Profile</h2>
+            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-800">
+              <h2 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-100">Edit Profile</h2>
               <button
                 onClick={closeEditModal}
-                className="p-1 rounded-md text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition"
+                className="p-1 rounded-md text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
               >
                 <FaTimes className="w-5 h-5" />
               </button>
@@ -237,46 +237,46 @@ export default function UserProfile() {
             <form onSubmit={handleEditSubmit} className="p-6 space-y-4">
               {/* Error Message */}
               {editError && (
-                <div className="bg-red-50 border border-red-200 rounded-lg p-3 flex items-center gap-2">
-                  <svg className="w-5 h-5 text-red-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900/50 rounded-lg p-3 flex items-center gap-2">
+                  <svg className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                   </svg>
-                  <p className="text-red-800 text-sm">{editError}</p>
+                  <p className="text-red-800 dark:text-red-300 text-sm">{editError}</p>
                 </div>
               )}
 
               {/* Success Message */}
               {editSuccess && (
-                <div className="bg-green-50 border border-green-200 rounded-lg p-3 flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-900/50 rounded-lg p-3 flex items-center gap-2">
+                  <svg className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <p className="text-green-800 text-sm">{editSuccess}</p>
+                  <p className="text-green-800 dark:text-green-300 text-sm">{editSuccess}</p>
                 </div>
               )}
 
               {/* Name Input */}
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
                 <input
                   type="text"
                   name="name"
                   value={editFormData.name}
                   onChange={handleEditInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 text-gray-800"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-transparent text-gray-800 dark:text-gray-100"
                   placeholder="Enter your full name"
                 />
               </div>
 
               {/* Password Input */}
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">New Password (Optional)</label>
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">New Password (Optional)</label>
                 <input
                   type="password"
                   name="password"
                   value={editFormData.password}
                   onChange={handleEditInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 text-gray-800"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-transparent text-gray-800 dark:text-gray-100"
                   placeholder="Leave empty to keep current password"
                 />
               </div>
@@ -284,13 +284,13 @@ export default function UserProfile() {
               {/* Confirm Password Input */}
               {editFormData.password && (
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Confirm Password</label>
+                  <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Confirm Password</label>
                   <input
                     type="password"
                     name="confirmPassword"
                     value={editFormData.confirmPassword}
                     onChange={handleEditInputChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 text-gray-800"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-transparent text-gray-800 dark:text-gray-100"
                     placeholder="Confirm your new password"
                   />
                 </div>
@@ -298,10 +298,10 @@ export default function UserProfile() {
             </form>
 
             {/* Modal Footer */}
-            <div className="flex gap-3 px-6 py-4 border-t border-gray-200">
+            <div className="flex gap-3 px-6 py-4 border-t border-gray-200 dark:border-gray-800">
               <button
                 onClick={closeEditModal}
-                className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition"
+                className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition"
               >
                 Cancel
               </button>

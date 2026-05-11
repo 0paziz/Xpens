@@ -130,7 +130,7 @@ export default function Dashboard() {
     >
       {/* -------- ERROR STATE -------- */}
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-600 p-3 rounded-lg mb-4 flex items-center justify-between gap-2 text-sm">
+        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900/50 text-red-600 dark:text-red-400 p-3 rounded-lg mb-4 flex items-center justify-between gap-2 text-sm">
           <span>{error}</span>
           <button
             onClick={fetchAll}
@@ -157,15 +157,15 @@ export default function Dashboard() {
 
           {/* -------- BUDGET PROGRESS -------- */}
           <div className="mt-6">
-            <h2 className="text-base sm:text-xl font-bold mb-3 sm:mb-4 text-gray-800">
+            <h2 className="text-base sm:text-xl font-bold mb-3 sm:mb-4 text-gray-800 dark:text-gray-100">
               Budget Overview
             </h2>
             <BudgetProgressCard />
           </div>
 
           {/* -------- BAR CHART -------- */}
-          <div className="bg-white p-4 sm:p-5 rounded-xl shadow-sm mt-6">
-            <h2 className="font-semibold text-gray-700 mb-4 text-sm sm:text-base">
+          <div className="bg-white dark:bg-[#0B1120] border border-transparent dark:border-gray-800 p-4 sm:p-5 rounded-xl shadow-sm mt-6">
+            <h2 className="font-semibold text-gray-700 dark:text-gray-200 mb-4 text-sm sm:text-base">
               Monthly Overview
             </h2>
 
@@ -205,7 +205,7 @@ export default function Dashboard() {
 
           {/* -------- RECENT TRANSACTIONS -------- */}
           <div className="mt-6 sm:mt-8">
-            <h2 className="text-base sm:text-xl font-bold mb-3 sm:mb-4 text-gray-800">
+            <h2 className="text-base sm:text-xl font-bold mb-3 sm:mb-4 text-gray-800 dark:text-gray-100">
               Recent Transactions
             </h2>
 

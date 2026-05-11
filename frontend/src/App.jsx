@@ -1,5 +1,8 @@
 // src/App.jsx
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
@@ -13,9 +16,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Public pages */}
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
+        {/* Protected pages */}
         <Route
           path="/dashboard"
           element={
@@ -61,7 +69,7 @@ function App() {
           }
         />
 
-        <Route path="*" element={<Login />} />
+        <Route path="*" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );

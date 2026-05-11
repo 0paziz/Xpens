@@ -34,9 +34,9 @@ export default function SummaryCards({ data }) {
 
 function Card({ title, value, icon, bg, border, text }) {
   return (
-    <div className={`${bg} ${border} border p-5 rounded-xl hover:scale-105 transition-transform duration-200`}>
+    <div className={`bg-white dark:bg-[#0B1120] ${bg} ${border} border p-5 rounded-xl hover:scale-105 transition-transform duration-200`}>
       <div className="flex items-center justify-between mb-2">
-        <h3 className="text-gray-500 text-sm font-medium">{title}</h3>
+        <h3 className="text-gray-500 dark:text-gray-400 text-sm font-medium">{title}</h3>
         <span className={`${text} text-lg`}>{icon}</span>
       </div>
       <p className={`text-2xl font-bold ${text}`}>

@@ -28,9 +28,9 @@ export default function TransactionList({ data, onDelete, onEdit }) {
   };
 
   return (
-    <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-100 mt-4">
+    <div className="bg-white dark:bg-[#0B1120] p-5 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 mt-4">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="font-semibold text-gray-800">Transactions</h2>
+        <h2 className="font-semibold text-gray-800 dark:text-gray-100">Transactions</h2>
         {data.length > 0 && (
           <span className="text-xs text-gray-400">
             {startIdx + 1}–{Math.min(startIdx + ITEMS_PER_PAGE, data.length)} of {data.length}
@@ -49,10 +49,10 @@ export default function TransactionList({ data, onDelete, onEdit }) {
             {pageData.map((t) => (
               <div
                 key={t._id}
-                className="flex justify-between items-center border border-gray-100 rounded-lg p-3 hover:bg-gray-50 transition"
+                className="flex justify-between items-center border border-gray-100 dark:border-gray-800 rounded-lg p-3 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition"
               >
                 <div>
-                  <p className="font-semibold text-gray-800">{t.category}</p>
+                  <p className="font-semibold text-gray-800 dark:text-gray-200">{t.category}</p>
                   <div className="flex items-center gap-2 text-sm text-gray-400">
                     {t.description && <span>{t.description}</span>}
                     {t.date && (
@@ -95,7 +95,7 @@ export default function TransactionList({ data, onDelete, onEdit }) {
               <button
                 onClick={() => goTo(safePage - 1)}
                 disabled={safePage === 1}
-                className="px-2.5 py-1.5 rounded-md text-sm text-gray-600 hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed transition"
+                className="px-2.5 py-1.5 rounded-md text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-30 disabled:cursor-not-allowed transition"
                 aria-label="Previous page"
               >
                 ‹
@@ -109,7 +109,7 @@ export default function TransactionList({ data, onDelete, onEdit }) {
                   className={`px-3 py-1.5 rounded-md text-sm font-medium transition ${
                     page === safePage
                       ? "bg-emerald-500 text-white shadow-sm"
-                      : "text-gray-600 hover:bg-gray-100"
+                      : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
                   }`}
                 >
                   {page}
@@ -120,7 +120,7 @@ export default function TransactionList({ data, onDelete, onEdit }) {
               <button
                 onClick={() => goTo(safePage + 1)}
                 disabled={safePage === totalPages}
-                className="px-2.5 py-1.5 rounded-md text-sm text-gray-600 hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed transition"
+                className="px-2.5 py-1.5 rounded-md text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-30 disabled:cursor-not-allowed transition"
                 aria-label="Next page"
               >
                 ›

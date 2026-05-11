@@ -76,12 +76,12 @@ export default function AddTransaction() {
     >
       {/* -------- ALERTS -------- */}
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg mb-4 text-sm">
+        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900/50 text-red-600 dark:text-red-400 px-4 py-3 rounded-lg mb-4 text-sm">
           {error}
         </div>
       )}
       {success && (
-        <div className="bg-emerald-50 border border-emerald-200 text-emerald-600 px-4 py-3 rounded-lg mb-4 text-sm">
+        <div className="bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-900/50 text-emerald-600 dark:text-emerald-400 px-4 py-3 rounded-lg mb-4 text-sm">
           {success}
         </div>
       )}
@@ -91,7 +91,7 @@ export default function AddTransaction() {
         <TransactionForm onAdd={handleAdd} loading={loading} />
 
         <div className="mt-6 sm:mt-8">
-          <h2 className="text-base sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
+          <h2 className="text-base sm:text-xl font-bold text-gray-800 dark:text-gray-100 mb-3 sm:mb-4">
             All Transactions
           </h2>
           <TransactionList
